@@ -12,7 +12,8 @@ const IndexPage = () => {
         {tabs.map((tab) => (
           <tr key={tab.id}>
             <td className="border px-4 py-2">
-              {tab.description}</td>
+              {tab.description}
+            </td>
           </tr>
         ))}
       </header>
@@ -26,11 +27,13 @@ const IndexPage = () => {
               <tr key={todo.id}>
                 <td className="border px-2 py-1">
                   <Checkbox />
-                  {todo.description}</td>
+                  {todo.description}
+                </td>
               </tr>
             ))}
           </tbody>
-        </table></section>
+        </table>
+      </section>
     </main>
 
   )
