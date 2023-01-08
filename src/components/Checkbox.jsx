@@ -1,5 +1,7 @@
 const Checkbox = () => {
-    <input type="checkbox" clasNames="w-6 h-6" />
+    return (
+        <input type="checkbox" classNames="w-6 h-6" />
+    )
 }
 
 export default Checkbox

@@ -20,6 +20,21 @@ const initialTodos = [
   },
 ]
 
+const initialTabs = [
+  {
+    id: 1,
+    description: "Homework"
+  },
+  {
+    id: 2,
+    description: "Chores"
+  },
+  {
+    id: 3,
+    description: "FATALITY"
+  },
+]
+
 export const Context = createContext()
 
 export const useContext = () => useNativeContext(Context)
@@ -27,6 +42,7 @@ export const useContext = () => useNativeContext(Context)
 const ContextProvider = (props) => {
   const [nextId, setNextId] = useState(2)
   const [todos, setTodos] = useState(initialTodos)
+  const [tabs, setTabs] = useState(initialTabs)
   const getNextId = useCallback(() => {
     setNextId(nextId + 1)
 
@@ -54,6 +70,28 @@ const ContextProvider = (props) => {
     )
   }, [])
 
+  const createTab = useCallback(
+    (tab) => {
+      setTabs((tabs) => [
+        ...tabs,
+        {
+          id: getNextId(),
+          ...tab,
+        },
+      ])
+    },
+    [getNextId]
+  )
+  const deleteTab = useCallback(
+    (tabId) => setTabs((tabs) => tabs.filter(({ id }) => id !== tabId)),
+    []
+  )
+  const updateTab = useCallback((updatedTab) => {
+    setTabs((tabs) =>
+      tabs.map((tab) => (tab.id === updatedTab.id ? updatedTab : tab))
+    )
+  }, [])
+
   return (
     <Context.Provider
       {...props}
@@ -62,6 +100,10 @@ const ContextProvider = (props) => {
         createTodo,
         deleteTodo,
         updateTodo,
+        tabs,
+        createTab,
+        deleteTab,
+        updateTab,
       }}
     />
   )
