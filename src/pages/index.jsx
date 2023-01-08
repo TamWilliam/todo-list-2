@@ -1,25 +1,14 @@
 import { useContext } from "@/components/ContextProvider.jsx"
 import { TrashIcon, PlusIcon, PencilSquareIcon, checkIcon } from "@heroicons/react/24/solid"
-import { useCallback } from "react"
 import Checkbox from "@/components/Checkbox.jsx"
+import IconButtons from "@/components/IconButtons.jsx"
 
 const IndexPage = () => {
-  const { todos, deleteTodo, tabs } = useContext()
-  const handleClickDelete = useCallback(
-    (event) => {
-      const todoId = Number.parseInt(
-        event.currentTarget.getAttribute("data-todo-id"),
-        10
-      )
-
-      deleteTodo(todoId)
-    },
-    [deleteTodo]
-  )
+  const { todos, tabs } = useContext()
 
   return (
     <main className="flex flex-col">
-      <header className="flex p-4 justify-start items-center border-b">
+      <header className="flex justify-start items-center border-b">
         {tabs.map((tab) => (
           <tr key={tab.id}>
             <td className="border px-4 py-2">
@@ -28,9 +17,7 @@ const IndexPage = () => {
         ))}
       </header>
       <section>
-        <PlusIcon class="flex flex-row w-6" />
-        <PencilSquareIcon class="flex flex-row w-6" />
-        <TrashIcon class="flex flex-row w-6" />
+        <IconButtons />
         <table className="w-full mt-8">
           <thead>
           </thead>
