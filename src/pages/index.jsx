@@ -18,13 +18,13 @@ const IndexPage = () => {
       </header>
       <section>
         <IconButtons />
-        <table className="w-full mt-8">
+        <table className="w-full">
           <thead>
           </thead>
           <tbody>
             {todos.map((todo) => (
               <tr key={todo.id}>
-                <td className="border px-4 py-2">
+                <td className="border px-2 py-1">
                   <Checkbox />
                   {todo.description}</td>
               </tr>
