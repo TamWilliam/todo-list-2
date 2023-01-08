@@ -1,7 +1,7 @@
 import Link from "@/components/Link"
 import classNames from "classnames"
-import Head from "next/head.js"
 import { useRouter } from "next/router.js"
+import Tabs from "@/components/Tabs.jsx"
 
 const NavLink = (props) => {
   const { asPath } = useRouter()
@@ -21,12 +21,8 @@ const Page = (props) => {
 
   return (
     <main className="flex flex-col">
-      <Head>
-        <title>{title}</title>
-      </Head>
       <header className="flex p-4 justify-between items-center border-b">
-        <nav>
-        </nav>
+        <Tabs />
       </header>
       <section>{children}</section>
     </main>
